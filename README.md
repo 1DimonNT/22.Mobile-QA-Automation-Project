@@ -1,4 +1,4 @@
-markdown# 22. Mobile QA Automation Project
+# 22. Mobile QA Automation Project
 
 ## 📱 Mobile tests for Wikipedia on BrowserStack
 
