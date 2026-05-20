@@ -15,6 +15,7 @@
 ## ✅ Что реализовано
 
 
+
 | Тест | Описание |
 | :--- | :--- |
 | `test_wikipedia_search` | Поиск текста "BrowserStack" в Wikipedia |
@@ -26,11 +27,11 @@
 
 ### 1. Клонировать репозиторий
 ```bash
-git clone https://github.com/1DimonNT/22.Mobile-QA-Automation-Project.git
+git clone https://github.com
 cd 22.Mobile-QA-Automation-Project
 ```
 
-### 2. Создать виртуальное окружение
+### 2. Создать виртуальное окружения
 ```bash
 python -m venv venv
 venv\Scripts\activate  # Windows
@@ -39,6 +40,7 @@ venv\Scripts\activate  # Windows
 
 ### 3. Установить зависимости
 ```bash
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
@@ -69,13 +71,14 @@ allure serve allure-results
 * **Job name**: `22.Mobile-QA-Automation-Project`
 * **Agent**: `python3-jenkins-agent-1`
 * **Artifacts**: `allure-results`, `allure-report`
+* **Ссылка на сборку**: [Jenkins Job #4](https://jenkins.autotests.cloud/job/22.Mobile-QA-Automation-Project/4/)
 
 ### Настройка Freestyle Job
 
 1. **New Item** → имя: `22.Mobile-QA-Automation-Project` → **Freestyle project**
 
 2. **Source Code Management** → Git
-   * **Repository URL**: `https://github.com/1DimonNT/22.Mobile-QA-Automation-Project.git`
+   * **Repository URL**: `https://github.com`
    * **Branch Specifier**: `*/main`
 
 3. **Restrict where this project can be run**
@@ -94,7 +97,7 @@ echo "===== Запуск мобильных тестов на BrowserStack =====
 # Рекомендуется использовать Jenkins Credentials плагин вместо хранения токенов в открытом виде
 export BROWSERSTACK_USERNAME="your_username"
 export BROWSERSTACK_ACCESS_KEY="your_access_key"
-export REMOTE_URL="http://hub.browserstack.com/wd/hub"
+export REMOTE_URL="http://browserstack.com"
 export PLATFORM_NAME="android"
 export DEVICE_NAME="Samsung Galaxy S23 Ultra"
 export PLATFORM_VERSION="13.0"
@@ -108,6 +111,8 @@ pytest tests/ -v --platform=android --alluredir=allure-results
    * **Path**: `allure-results`
 
 ### 🧪 Результаты тестов в Jenkins
+
+Актуальный отчет о прохождении тестов доступен на сервере CI: [Allure Report на Jenkins](https://jenkins.autotests.cloud/job/22.Mobile-QA-Automation-Project/4/allure/)
 
 
 | Тест | Статус |
@@ -151,9 +156,11 @@ pytest tests/ -v --platform=android --alluredir=allure-results
 
 ## 📎 Ссылки
 
+* [Allure Тестовый Отчет](https://jenkins.autotests.cloud/job/22.Mobile-QA-Automation-Project/4/allure/)
+* [Jenkins Сборка Проекта](https://jenkins.autotests.cloud/job/22.Mobile-QA-Automation-Project/4/)
 * [BrowserStack App Automate](https://browserstack.com)
-* [Selene Documentation](https://github.io)
-* [Appium Python Client](https://github.com)
+* [Selene Documentation Repository](https://github.com)
+* [Appium Python Client Repository](https://github.com)
 
 ---
 
@@ -161,3 +168,22 @@ pytest tests/ -v --platform=android --alluredir=allure-results
 
 **Dmitrii Ivantsov**  
 *QA Automation Engineer*
+
+---
+
+## ✅ Статус проекта
+
+<table>
+  <tr>
+    <td><b>Build Status</b></td>
+    <td><kbd>🟢 passing</kbd></td>
+  </tr>
+  <tr>
+    <td><b>Tests Status</b></td>
+    <td><kbd>🔵 2 passed / 1 skipped</kbd></td>
+  </tr>
+  <tr>
+    <td><b>Allure Report</b></td>
+    <td><a href="https://jenkins.autotests.cloud/job/22.Mobile-QA-Automation-Project/4/allure/" target="_blank"><kbd>🔗 open report</kbd></a></td>
+  </tr>
+</table>
