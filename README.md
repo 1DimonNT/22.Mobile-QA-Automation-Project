@@ -92,8 +92,8 @@ pip install -r requirements.txt
 
 echo "===== Запуск мобильных тестов на BrowserStack ====="
 # Рекомендуется использовать Jenkins Credentials плагин вместо хранения токенов в открытом виде
-export BROWSERSTACK_USERNAME="mtpbahob_YhZvyK"
-export BROWSERSTACK_ACCESS_KEY="4NMazF8xfcWYngjTSAaQ"
+export BROWSERSTACK_USERNAME="your_username"
+export BROWSERSTACK_ACCESS_KEY="your_access_key"
 export REMOTE_URL="http://hub.browserstack.com/wd/hub"
 export PLATFORM_NAME="android"
 export DEVICE_NAME="Samsung Galaxy S23 Ultra"
