@@ -65,10 +65,47 @@ allure serve allure-results
 
 ## 🔧 Jenkins сборка
 
+### Параметры окружения
 * **Job name**: `22.Mobile-QA-Automation-Project`
 * **Agent**: `python3-jenkins-agent-1`
-* **Build steps**: установка зависимостей → запуск тестов → генерация Allure отчета
 * **Artifacts**: `allure-results`, `allure-report`
+
+### Настройка Freestyle Job
+
+1. **New Item** → имя: `22.Mobile-QA-Automation-Project` → **Freestyle project**
+
+2. **Source Code Management** → Git
+   * **Repository URL**: `https://github.com/1DimonNT/22.Mobile-QA-Automation-Project.git`
+   * **Branch Specifier**: `*/main`
+
+3. **Restrict where this project can be run**
+   * **Label Expression**: `python3-jenkins-agent-1`
+
+4. **Build Steps** → **Execute shell**:
+```bash
+#!/bin/bash
+echo "===== Установка зависимостей ====="
+python3 -m venv venv
+. venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+
+echo "===== Запуск мобильных тестов на BrowserStack ====="
+# Рекомендуется использовать Jenkins Credentials плагин вместо хранения токенов в открытом виде
+export BROWSERSTACK_USERNAME="mtpbahob_YhZvyK"
+export BROWSERSTACK_ACCESS_KEY="4NMazF8xfcWYngjTSAaQ"
+export REMOTE_URL="http://hub.browserstack.com/wd/hub"
+export PLATFORM_NAME="android"
+export DEVICE_NAME="Samsung Galaxy S23 Ultra"
+export PLATFORM_VERSION="13.0"
+export APP_URL="bs://51b4dd3c328b4cf8b59601552262b84a21fb39f8"
+export TIMEOUT="45"
+
+pytest tests/ -v --platform=android --alluredir=allure-results
+```
+
+5. **Post-build Actions** → **Allure Report**
+   * **Path**: `allure-results`
 
 ### 🧪 Результаты тестов в Jenkins
 
